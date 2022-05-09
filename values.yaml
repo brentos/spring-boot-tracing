@@ -1,0 +1,6 @@
+proxy:
+  type: NodePort
+  http:
+    servicePort: 80
+    containerPort: 8000
+    nodePort: 30001

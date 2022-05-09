@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kong
+    konghq.com/plugins: zipkin
+    konghq.com/strip-path: "true"
+  name: tracing
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: tracing
+            port:
+              number: 8080
+        path: /tracing
+        pathType: Prefix
